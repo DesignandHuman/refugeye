@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="100"
-    tools:context=".Home">
+    android:weightSum="100" >
 
     <com.refugeye.DrawingView
         android:background="@android:color/white"
         android:id="@+id/home_drawing_view"
-        android:layout_weight="80"
+        android:layout_weight="70"
         android:layout_width="0dip"
         android:layout_height="match_parent"/>
 
     <ListView
         android:id="@+id/home_picto_list"
-        android:layout_weight="20"
-        android:background="#F00"
-        android:foreground="#F00"
+        android:layout_weight="30"
         android:layout_width="0dip"
         android:layout_height="match_parent"/>
 
