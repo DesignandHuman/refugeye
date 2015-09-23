@@ -1,1 +1,1 @@
-include ':app', ':DragNDropList'
+include ':app'

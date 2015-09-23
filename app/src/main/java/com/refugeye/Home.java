@@ -1,13 +1,18 @@
 package com.refugeye;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.mobeta.android.dslv.DragSortListView;
 
 public class Home extends AppCompatActivity {
 
     public DrawingView drawingView;
-    public ListView listView;
+    public DragSortListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +21,9 @@ public class Home extends AppCompatActivity {
         drawingView = (DrawingView) findViewById(R.id.home_drawing_view);
         drawingView.setupDrawing();
 
-        listView = (ListView) findViewById(R.id.home_picto_list);
+        listView = (DragSortListView) findViewById(R.id.home_picto_list);
 
-        PictoListAdapter pictoListAdapter = new PictoListAdapter(this);
+        final PictoListAdapter pictoListAdapter = new PictoListAdapter(this);
 
 
         pictoListAdapter.add(new Picto(R.drawable.ic_2440));
@@ -41,6 +46,15 @@ public class Home extends AppCompatActivity {
         pictoListAdapter.add(new Picto(R.drawable.clipboard52));
 
         listView.setAdapter(pictoListAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), pictoListAdapter.getItem(position).resId);
+                drawingView.addBitmap(bitmap);
+            }
+        });
+
     }
 
 

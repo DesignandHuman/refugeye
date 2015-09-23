@@ -3,6 +3,7 @@ package com.refugeye;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
@@ -11,11 +12,11 @@ import android.view.View;
 
 public class DrawingView extends View {
 
-    private Paint drawPaint;
-    private Path drawPath;
+    public Path drawPath;
     private Paint canvasPaint;
     private Bitmap canvasBitmap;
-    private Canvas drawCanvas;
+    public Paint drawPaint;
+    public Canvas drawCanvas;
 
     public DrawingView(Context context) {
         super(context);
@@ -80,5 +81,13 @@ public class DrawingView extends View {
         }
         invalidate();
         return true;
+    }
+
+    public void addBitmap(Bitmap bitmap) {
+        drawCanvas.drawColor(Color.WHITE);
+        drawCanvas.drawBitmap(bitmap, drawCanvas.getWidth() / 2 - bitmap.getWidth() / 2, drawCanvas.getHeight() / 2 - bitmap.getHeight() / 2 - 50, drawPaint);
+        drawCanvas.drawPath(drawPath, drawPaint);
+        drawPath.reset();
+        invalidate();
     }
 }

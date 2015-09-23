@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:dslv="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:weightSum="100" >
+    android:weightSum="100">
 
     <com.refugeye.DrawingView
         android:background="@android:color/white"
@@ -13,10 +14,12 @@
         android:layout_width="0dip"
         android:layout_height="match_parent"/>
 
-    <ListView
+    <com.mobeta.android.dslv.DragSortListView
         android:id="@+id/home_picto_list"
         android:layout_weight="30"
         android:layout_width="0dip"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        dslv:drag_handle_id="@id/drag_handle"
+        dslv:float_background_color="@android:color/background_light"/>
 
 </LinearLayout>
