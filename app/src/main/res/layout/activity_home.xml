@@ -7,12 +7,32 @@
     android:orientation="horizontal"
     android:weightSum="100">
 
-    <com.refugeye.DrawingView
-        android:background="@android:color/white"
-        android:id="@+id/home_drawing_view"
+    <FrameLayout
         android:layout_weight="70"
         android:layout_width="0dip"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+        <com.refugeye.DrawingView
+            android:background="@android:color/white"
+            android:id="@+id/home_drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/home_clear_canvas"
+            android:src="@drawable/ic_clear_black_24dp"
+            android:layout_gravity="left|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/home_save_canvas"
+            android:src="@drawable/ic_save_black_24dp"
+            android:layout_gravity="right|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </FrameLayout>
 
     <com.mobeta.android.dslv.DragSortListView
         android:id="@+id/home_picto_list"

@@ -6,9 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class DrawingView extends View {
 
@@ -89,5 +96,29 @@ public class DrawingView extends View {
         drawCanvas.drawPath(drawPath, drawPaint);
         drawPath.reset();
         invalidate();
+    }
+
+
+    public void reset() {
+        drawCanvas.drawColor(Color.WHITE);
+        invalidate();
+    }
+
+    public void save(Context context) {
+
+        try {
+            String filename = Environment.getExternalStorageDirectory().toString();
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault());
+            File f = new File(filename, "Refugeye-" + simpleDateFormat.format(new Date()) + ".png");
+            f.createNewFile();
+            System.out.println("file created " + f.toString());
+            FileOutputStream out = new FileOutputStream(f);
+            Bitmap bitmap = canvasBitmap;
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

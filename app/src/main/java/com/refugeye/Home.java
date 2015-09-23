@@ -55,6 +55,19 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.home_clear_canvas).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawingView.reset();
+            }
+        });
+
+        findViewById(R.id.home_save_canvas).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawingView.save(Home.this);
+            }
+        });
     }
 
 
