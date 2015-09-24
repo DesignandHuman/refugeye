@@ -30,24 +30,24 @@ public class Home extends AppCompatActivity {
 
         final PictoListAdapter pictoListAdapter = new PictoListAdapter(this);
 
-        pictoListAdapter.add(new Picto(R.drawable.ic_2440, new String[] {"call"}));
+        pictoListAdapter.add(new Picto(R.drawable.ic_2440, new String[] {"call", "appel"}));
         pictoListAdapter.add(new Picto(R.drawable.ic_2441, new String[]{"24"}));
         pictoListAdapter.add(new Picto(R.drawable.ic_2442, new String[]{"24"}));
-        pictoListAdapter.add(new Picto(R.drawable.air6, new String[]{"plane"}));
-        pictoListAdapter.add(new Picto(R.drawable.airplane66, new String[]{"plane"}));
-        pictoListAdapter.add(new Picto(R.drawable.airplane67, new String[]{"plane"}));
-        pictoListAdapter.add(new Picto(R.drawable.airplane68, new String[]{"plane"}));
-        pictoListAdapter.add(new Picto(R.drawable.barscode, new String[]{"barcode"}));
-        pictoListAdapter.add(new Picto(R.drawable.black330, new String[]{"umbrella"}));
-        pictoListAdapter.add(new Picto(R.drawable.black331, new String[]{"car"}));
-        pictoListAdapter.add(new Picto(R.drawable.boat17, new String[]{"boat"}));
-        pictoListAdapter.add(new Picto(R.drawable.box49, new String[]{"box"}));
-        pictoListAdapter.add(new Picto(R.drawable.boxes1, new String[]{"boxes"}));
-        pictoListAdapter.add(new Picto(R.drawable.boxes2, new String[]{"boxes"}));
-        pictoListAdapter.add(new Picto(R.drawable.call36, new String[]{"call"}));
-        pictoListAdapter.add(new Picto(R.drawable.call37, new String[]{"call"}));
-        pictoListAdapter.add(new Picto(R.drawable.chronometer10, new String[]{"time"}));
-        pictoListAdapter.add(new Picto(R.drawable.clipboard52, new String[]{"clipboard"}));
+        pictoListAdapter.add(new Picto(R.drawable.air6, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.airplane66, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.airplane67, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.airplane68, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.barscode, new String[]{"barcode", "code-barre"}));
+        pictoListAdapter.add(new Picto(R.drawable.black330, new String[]{"umbrella", "parapluie"}));
+        pictoListAdapter.add(new Picto(R.drawable.black331, new String[]{"car", "voiture"}));
+        pictoListAdapter.add(new Picto(R.drawable.boat17, new String[]{"boat", "bateau"}));
+        pictoListAdapter.add(new Picto(R.drawable.box49, new String[]{"box", "boite"}));
+        pictoListAdapter.add(new Picto(R.drawable.boxes1, new String[]{"boxes", "boites"}));
+        pictoListAdapter.add(new Picto(R.drawable.boxes2, new String[]{"boxes", "boites"}));
+        pictoListAdapter.add(new Picto(R.drawable.call36, new String[]{"call", "appel"}));
+        pictoListAdapter.add(new Picto(R.drawable.call37, new String[]{"call", "appel"}));
+        pictoListAdapter.add(new Picto(R.drawable.chronometer10, new String[]{"time", "heure"}));
+        pictoListAdapter.add(new Picto(R.drawable.clipboard52, new String[]{"clipboard", "presse-papier"}));
 
         listView.setAdapter(pictoListAdapter);
 
