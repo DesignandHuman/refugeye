@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import java.util.HashSet;
+
 public class PictoListAdapter extends ArrayAdapter<Picto> {
 
     private final LayoutInflater inflater;
+    private HashSet<Picto> pictos = new HashSet<>();
 
     public PictoListAdapter(Context context) {
         super(context, 0);
@@ -28,6 +31,27 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
 
         holder.image.setImageResource(getItem(position).resId);
         return convertView;
+    }
+
+    @Override
+    public void add(Picto object) {
+        super.add(object);
+        pictos.add(object);
+    }
+
+    public void filter(String text) {
+            clear();
+        if (text.isEmpty()) {
+            addAll(pictos);
+            return;
+        }
+
+        for (Picto picto : pictos) {
+            if (picto.names.contains(text)) {
+                add(picto);
+            }
+        }
+        notifyDataSetChanged();
     }
 
     private class ViewHolder {
