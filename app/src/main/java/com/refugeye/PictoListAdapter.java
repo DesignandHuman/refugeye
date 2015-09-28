@@ -40,15 +40,17 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
     }
 
     public void filter(String text) {
-            clear();
+        clear();
         if (text.isEmpty()) {
             addAll(pictos);
             return;
         }
 
         for (Picto picto : pictos) {
-            if (picto.names.contains(text)) {
-                add(picto);
+            for (String name : picto.names) {
+                if (name.toLowerCase().startsWith(text.toLowerCase())) {
+                    add(picto);
+                }
             }
         }
         notifyDataSetChanged();

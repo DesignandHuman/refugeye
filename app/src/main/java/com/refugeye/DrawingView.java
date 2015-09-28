@@ -42,7 +42,7 @@ public class DrawingView extends View {
         drawPaint = new Paint();
 
 
-        drawPaint.setColor(getResources().getColor(R.color.orange));
+        drawPaint.setColor(getResources().getColor(R.color.orange_transp));
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(20);
         drawPaint.setStyle(Paint.Style.STROKE);
@@ -98,7 +98,6 @@ public class DrawingView extends View {
         invalidate();
     }
 
-
     public void reset() {
         drawCanvas.drawColor(Color.WHITE);
         invalidate();
@@ -119,6 +118,5 @@ public class DrawingView extends View {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

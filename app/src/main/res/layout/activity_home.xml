@@ -1,56 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
+    android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:dslv="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:weightSum="100">
+    android:layout_height="match_parent">
 
     <FrameLayout
-        android:layout_weight="70"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/sliding_pannel">
 
         <com.refugeye.DrawingView
-            android:background="@android:color/white"
             android:id="@+id/home_drawing_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
 
-        <ImageView
-            android:id="@+id/home_clear_canvas"
-            android:src="@drawable/ic_clear_black_24dp"
-            android:layout_gravity="left|top"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/home_save_canvas"
-            android:src="@drawable/ic_save_black_24dp"
-            android:layout_gravity="right|top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/home_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_clear_black_24dp"/>
 
+            <ImageView
+                android:id="@+id/home_clear_canvas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_clear_black_24dp"/>
+
+            <ImageView
+                android:id="@+id/home_save_canvas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_save_black_24dp"/>
+
+        </LinearLayout>
     </FrameLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="30"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content">
+    <com.refugeye.SwipeView
+        android:id="@id/sliding_pannel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/home_search"
-            android:imeOptions="flagNoExtractUi"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <ListView
-            android:id="@+id/home_picto_list"
+        <ImageView
+            android:id="@+id/toggle_drawer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_clear_black_24dp"/>
 
-    </LinearLayout>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="@color/orange"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:padding="8dp">
+
+                <EditText
+                    android:id="@+id/home_search"
+                    android:background="@drawable/rounded"
+                    android:layout_width="match_parent"
+                    android:drawableLeft="@drawable/ic_search"
+                    android:layout_height="32dp"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="16dp"
+                    android:imeOptions="flagNoExtractUi"
+                    android:singleLine="true"/>
+
+            </FrameLayout>
+
+            <ListView
+                android:id="@+id/home_picto_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </com.refugeye.SwipeView>
+</FrameLayout>
