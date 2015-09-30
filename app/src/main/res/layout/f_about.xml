@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:background="#BB000000"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="370dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/about_name"
+                fontPath="fonts/infini_bold.otf"
+                android:layout_width="wrap_content"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Refugeye is a simple project. When refugees arrive in a host country, they must explain their condition to an administration, to an NGO, to associations. However, words fail when you do not not speak the language of the host country.\n\nRefugeye is a solution that helps people communicate using simple pictograms. Refugeye also allows you to draw quick over these icons to better understand.\n\nTogether, if we communicate better, we will do better."
+                fontPath="fonts/infini_romain.otf"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="10dp"
+                android:textStyle="italic"
+                android:textSize="@dimen/about_text"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Geoffrey Dorne for Design &amp; Human"
+                fontPath="fonts/infini_romain.otf"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/about_text"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+
+            <TextView
+                android:text="Credits"
+                android:layout_width="wrap_content"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                fontPath="fonts/infini_bold.otf"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Idea &amp; design Geoffrey Dorne for Design &amp; Human
+Code by Sidereo
+Typography Infini by Sandrine Nugue
+Icons by Luis Prado, [liste à compléter..]"
+                android:layout_width="wrap_content"
+                fontPath="fonts/infini_romain.otf"
+                android:textSize="@dimen/about_text"
+                android:layout_marginBottom="30dp"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+            <TextView
+                android:text="License"
+                android:layout_width="wrap_content"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                fontPath="fonts/infini_bold.otf"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="License GPL [à définir...]"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/about_text"
+                android:layout_marginBottom="30dp"
+                fontPath="fonts/infini_romain.otf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+            <TextView
+                android:text="Website"
+                android:layout_width="wrap_content"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="10dp"
+                fontPath="fonts/infini_bold.otf"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="http://refugeye.com/"
+                android:textColorLink="@android:color/white"
+                fontPath="fonts/infini_romain.otf"
+                android:autoLink="web"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/about_text"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/about_close"
+            android:src="@drawable/ic_close"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@drawable/ic_design_human"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </FrameLayout>
+</ScrollView>

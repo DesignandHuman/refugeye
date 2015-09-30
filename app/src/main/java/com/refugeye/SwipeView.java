@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -37,14 +38,14 @@ public class SwipeView extends LinearLayout {
 
     public void open() {
         opened = true;
-        animate().translationX(dpToPx(0)).setDuration(500).start();
-        toggle.setImageResource(R.drawable.ic_clear_black_24dp);
+        animate().translationX(dpToPx(0)).setDuration(300).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+        toggle.animate().rotationBy(180).setDuration(300).start();
     }
 
     public void close() {
         opened = false;
-        animate().translationX(dpToPx(220)).setDuration(500).start();
-        toggle.setImageResource(R.drawable.ic_save_black_24dp);
+        animate().translationX(dpToPx(220)).setDuration(300).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+        toggle.animate().rotationBy(180).setDuration(300).start();
     }
 
     public void toggle() {
