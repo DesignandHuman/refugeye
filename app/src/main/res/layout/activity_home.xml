@@ -20,12 +20,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
-            android:layout_marginLeft="8dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/home_info"
                 android:layout_width="wrap_content"
+                android:padding="8dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_info"/>
 
@@ -33,12 +33,14 @@
                 android:id="@+id/home_clear_canvas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_clear"/>
 
             <ImageView
                 android:id="@+id/home_save_canvas"
                 android:layout_width="wrap_content"
+                android:padding="8dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
                 android:layout_marginTop="24dp"
