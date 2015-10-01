@@ -91,7 +91,7 @@ public class DrawingView extends View {
     }
 
     public void addBitmap(Bitmap bitmap, float x, float y) {
-        drawCanvas.drawBitmap(bitmap, x, y, drawPaint);
+        drawCanvas.drawBitmap(bitmap, x - bitmap.getWidth() / 2, y - bitmap.getHeight() / 2, drawPaint);
         drawCanvas.drawPath(drawPath, drawPaint);
         drawPath.reset();
         invalidate();
