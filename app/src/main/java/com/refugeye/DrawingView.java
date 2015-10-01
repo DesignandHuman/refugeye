@@ -90,9 +90,8 @@ public class DrawingView extends View {
         return true;
     }
 
-    public void addBitmap(Bitmap bitmap) {
-        drawCanvas.drawColor(Color.WHITE);
-        drawCanvas.drawBitmap(bitmap, drawCanvas.getWidth() / 2 - bitmap.getWidth() / 2, drawCanvas.getHeight() / 2 - bitmap.getHeight() / 2 - 50, drawPaint);
+    public void addBitmap(Bitmap bitmap, float x, float y) {
+        drawCanvas.drawBitmap(bitmap, x, y, drawPaint);
         drawCanvas.drawPath(drawPath, drawPaint);
         drawPath.reset();
         invalidate();

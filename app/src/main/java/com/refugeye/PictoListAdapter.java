@@ -1,7 +1,9 @@
 package com.refugeye;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,7 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
 
     private final LayoutInflater inflater;
     private HashSet<Picto> pictos = new HashSet<>();
+    public int selectedPosition = -1;
 
     public PictoListAdapter(Context context) {
         super(context, 0);
@@ -20,7 +23,7 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.r_picto, parent, false);
@@ -30,6 +33,21 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
         holder = (ViewHolder) convertView.getTag();
 
         holder.image.setImageResource(getItem(position).resId);
+        convertView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    PictoListAdapter.this.selectedPosition = position;
+                    ClipData data = ClipData.newPlainText("", "");
+                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                    view.startDrag(data, shadowBuilder, view, 0);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
         return convertView;
     }
 

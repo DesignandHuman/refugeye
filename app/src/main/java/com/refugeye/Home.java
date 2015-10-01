@@ -3,16 +3,17 @@ package com.refugeye;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.DragEvent;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,54 +27,68 @@ public class Home extends AppCompatActivity {
     public DrawingView drawingView;
     public ListView listView;
     private EditText search;
+    private SwipeView swipeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        drawingView = (DrawingView) findViewById(R.id.home_drawing_view);
-        drawingView.setupDrawing();
-        drawingView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
-            }
-        });
-
-
-
-        listView = (ListView) findViewById(R.id.home_picto_list);
 
         final PictoListAdapter pictoListAdapter = new PictoListAdapter(this);
 
-        pictoListAdapter.add(new Picto(R.drawable.camping1, new String[] {"camping", "camping"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_5, new String[]{"24"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_47, new String[]{"24"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_359_cc, new String[]{"plane", "avion"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_601_cc, new String[]{"plane", "avion"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_620, new String[]{"plane", "avion"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_626, new String[]{"plane", "avion"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_859_cc, new String[]{"barcode", "code-barre"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_1475, new String[]{"umbrella", "parapluie"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_2138_cc, new String[]{"car", "voiture"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_2219, new String[]{"boat", "bateau"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_2380, new String[]{"box", "boite"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_2735, new String[]{"boxes", "boites"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_3012, new String[]{"boxes", "boites"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_3953_cc, new String[]{"call", "appel"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_4398, new String[]{"call", "appel"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_4403, new String[]{"time", "heure"}));
-        pictoListAdapter.add(new Picto(R.drawable.noun_5280, new String[]{"clipboard", "presse-papier"}));
+        drawingView = (DrawingView) findViewById(R.id.home_drawing_view);
+        drawingView.setupDrawing();
+        drawingView.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+
+                if (event.getAction() == DragEvent.ACTION_DROP) {
+                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), pictoListAdapter.getItem(pictoListAdapter.selectedPosition).resId);
+                    bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, false);
+                    drawingView.addBitmap(bitmap, event.getX(), event.getY());
+
+                }
+                if (event.getAction() == DragEvent.ACTION_DRAG_STARTED) {
+                    swipeView.close();
+                }
+                return true;
+            }
+        });
+
+        swipeView = (SwipeView) findViewById(R.id.sliding_pannel);
+
+        listView = (ListView) findViewById(R.id.home_picto_list);
+
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_01, new String[] {"camping", "camping"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_02, new String[]{"24"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_03, new String[]{"24"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_04, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_05, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_06, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_07, new String[]{"plane", "avion"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_08, new String[]{"barcode", "code-barre"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_09, new String[]{"umbrella", "parapluie"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_10, new String[]{"car", "voiture"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_11, new String[]{"boat", "bateau"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_12, new String[]{"box", "boite"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_13, new String[]{"boxes", "boites"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_14, new String[]{"boxes", "boites"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_15, new String[]{"call", "appel"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_16, new String[]{"call", "appel"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_17, new String[]{"time", "heure"}));
+        pictoListAdapter.add(new Picto(R.drawable.all_icons_18, new String[]{"clipboard", "presse-papier"}));
 
         listView.setAdapter(pictoListAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), pictoListAdapter.getItem(position).resId);
-                drawingView.addBitmap(bitmap);
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), pictoListAdapter.getItem(position).resId);
+//                bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, false);
+//                drawingView.addBitmap(bitmap, event.getX(), event.getY());
+//                swipeView.close();
+//            }
+//        });
 
         findViewById(R.id.home_info).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +140,15 @@ public class Home extends AppCompatActivity {
 
             }
         });
+    }
+
+    public Bitmap convertToBitmap(Drawable drawable, int widthPixels, int heightPixels) {
+        Bitmap mutableBitmap = Bitmap.createBitmap(widthPixels, heightPixels, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(mutableBitmap);
+        drawable.setBounds(0, 0, widthPixels, heightPixels);
+        drawable.draw(canvas);
+
+        return mutableBitmap;
     }
 
     @Override
