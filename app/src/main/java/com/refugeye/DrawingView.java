@@ -1,5 +1,6 @@
 package com.refugeye;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -114,8 +116,20 @@ public class DrawingView extends View {
             FileOutputStream out = new FileOutputStream(f);
             Bitmap bitmap = canvasBitmap;
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+            addImageToGallery(f.getAbsolutePath(), context);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void addImageToGallery(final String filePath, final Context context) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        values.put(MediaStore.MediaColumns.DATA, filePath);
+
+        context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
     }
 }
