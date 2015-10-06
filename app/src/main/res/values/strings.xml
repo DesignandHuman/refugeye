@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Refugeye</string>
     <string name="app_name_cdata"><![CDATA[ <b><font color=#FFB20F>Refug<font color=#ffffff>eye</b> ]]> </string>
+    <string name="saved">Saved</string>
 </resources>
