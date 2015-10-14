@@ -28,6 +28,7 @@ public class Home extends AppCompatActivity {
     public ListView listView;
     private EditText search;
     private SwipeView swipeView;
+    private View successOverlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,15 +81,6 @@ public class Home extends AppCompatActivity {
 
         listView.setAdapter(pictoListAdapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), pictoListAdapter.getItem(position).resId);
-//                bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, false);
-//                drawingView.addBitmap(bitmap, event.getX(), event.getY());
-//                swipeView.close();
-//            }
-//        });
 
         findViewById(R.id.home_info).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,10 +96,20 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        successOverlay = findViewById(R.id.success_overlay);
+
         findViewById(R.id.home_save_canvas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawingView.save(Home.this);
+                successOverlay.setVisibility(View.VISIBLE);
+                successOverlay.setAlpha(1.0f);
+                successOverlay.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        successOverlay.animate().alpha(-1.0f).setDuration(800).start();
+                    }
+                }, 500);
             }
         });
         search = (EditText) findViewById(R.id.home_search);

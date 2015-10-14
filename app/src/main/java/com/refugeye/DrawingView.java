@@ -12,7 +12,6 @@ import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -118,7 +117,6 @@ public class DrawingView extends View {
             Bitmap bitmap = canvasBitmap;
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
             addImageToGallery(f.getAbsolutePath(), context);
-            Toast.makeText(context, getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

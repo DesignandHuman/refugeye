@@ -99,4 +99,12 @@
 
         </LinearLayout>
     </com.refugeye.SwipeView>
+
+    <include layout="@layout/success_overlay"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:visibility="gone"
+             android:layout_width="wrap_content"
+             android:id="@+id/success_overlay" />
+
 </FrameLayout>
