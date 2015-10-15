@@ -60,6 +60,8 @@ public class DrawingView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
+        drawCanvas.drawColor(Color.WHITE);
+        invalidate();
     }
 
     @Override
