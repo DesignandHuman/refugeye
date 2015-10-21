@@ -60,13 +60,18 @@ public class PictoListAdapter extends ArrayAdapter<Picto> {
         }
 
         for (Picto picto : pictos) {
-            for (String name : picto.names) {
-                if (name.toLowerCase().startsWith(text.toLowerCase())) {
-                    add(picto);
-                }
-            }
+            nameLoop(text, picto);
         }
         notifyDataSetChanged();
+    }
+
+    private void nameLoop(String text, Picto picto) {
+        for (String name : picto.names) {
+            if (name.toLowerCase().startsWith(text.toLowerCase())) {
+                add(picto);
+                return;
+            }
+        }
     }
 
     private class ViewHolder {
