@@ -12,9 +12,23 @@ android {
         versionName "1.0"
     }
 
+    Properties props = new Properties()
+    props.load(new FileInputStream(file("../gradle.properties")))
+
+    signingConfigs {
+        release {
+            storeFile file("../keystore.jks")
+            storePassword props["storePassword"]
+            keyAlias props["keyAlias"]
+            keyPassword props["keyPassword"]
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -22,8 +36,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'asia.ivity.android:drag-sort-listview:1.0'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
 }
