@@ -23,7 +23,7 @@ public class DrawingView extends View {
 
     public Path drawPath;
     private Paint canvasPaint;
-    private Bitmap canvasBitmap;
+    private Bitmap canvasBitmap = null;
     public Paint drawPaint;
     public Canvas drawCanvas;
 
@@ -58,10 +58,12 @@ public class DrawingView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        drawCanvas = new Canvas(canvasBitmap);
-        drawCanvas.drawColor(Color.WHITE);
-        invalidate();
+        if (canvasBitmap == null) {
+            canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            drawCanvas = new Canvas(canvasBitmap);
+            drawCanvas.drawColor(Color.WHITE);
+            invalidate();
+        }
     }
 
     @Override
